@@ -7,7 +7,7 @@ import React, { useState, useEffect } from 'react';
 
 //   useEffect(() => {
 //     const fetchTasks = async () => {
-//       let url = 'http://localhost:8000/api/task-list/'
+//       let url = 'https://justdothething.herokuapp.com/api/task-list/'
 //       await fetch(url)
 //       .then(res => res.json())
 //       .then(data => setTodoList(data))
@@ -97,7 +97,7 @@ class App extends React.Component {
 
   fetchTasks() {
     console.log('Fetching.....')
-    fetch('http://localhost:8000/api/task-list/')
+    fetch('https://justdothething.herokuapp.com/api/task-list/')
     .then(response => response.json())
     .then(data => this.setState({
       todoList: data
@@ -119,10 +119,10 @@ class App extends React.Component {
     e.preventDefault()
 
     let csrftoken = this.getCookie('csrftoken')
-    let url = 'http://localhost:8000/api/task-create/'
+    let url = 'https://justdothething.herokuapp.com/api/task-create/'
 
     if (this.state.editing === true) {
-      url = `http://localhost:8000/api/task-update/${this.state.activeItem.id}/`
+      url = `https://justdothething.herokuapp.com/api/task-update/${this.state.activeItem.id}/`
       this.setState({
         editing: false
       })
@@ -158,7 +158,7 @@ class App extends React.Component {
   strikeUnstrike(task) {
     task.completed = !task.completed
     let csrftoken = this.getCookie('csrftoken')
-    let url = `http://localhost:8000/api/task-update/${task.id}/`
+    let url = `https://justdothething.herokuapp.com/api/task-update/${task.id}/`
     fetch(url, {
       method: 'POST',
       headers: {
@@ -177,7 +177,7 @@ class App extends React.Component {
 
   deleteItem(task) {
     let csrftoken = this.getCookie('csrftoken')
-    let url = `http://localhost:8000/api/task-delete/${task.id}/`
+    let url = `https://justdothething.herokuapp.com/api/task-delete/${task.id}/`
     fetch(url, {
       method: 'DELETE',
       headers: {
